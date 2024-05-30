@@ -2,9 +2,9 @@
 ## Prerequisites
 
 - Python 3.x
+- Download waferMap data on this [site](https://www.kaggle.com/datasets/qingyi/wm811k-wafer-map) and named **"dataset.pkl"** 
 
 ## Installation
-
 Follow these steps to set up and run the project:
 
 1. **Clone the Repository**
