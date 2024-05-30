@@ -1,8 +1,6 @@
 import torch
 import torch.nn as nn
 import time
-import numpy as np
-from cmaes import CMA
 from tqdm import tqdm
 
 def training(train_dataloader, model, epochs, learning_rate, device, optimizer_choice):
@@ -14,10 +12,6 @@ def training(train_dataloader, model, epochs, learning_rate, device, optimizer_c
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     elif optimizer_choice == 'sgd':
         optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
-    elif optimizer_choice == 'cma':
-        optimizer = CMA(mean=np.zeros(sum(p.numel() for p in model.parameters())), sigma=2.0)
-    elif optimizer_choice == 'lra-cma':
-        optimizer = CMA(mean=np.zeros(sum(p.numel() for p in model.parameters())), sigma=2.0, lr_adapt=True)
     elif optimizer_choice == 'lbfgs':
         optimizer = torch.optim.LBFGS(model.parameters(), lr=learning_rate)
 
@@ -42,21 +36,7 @@ def training(train_dataloader, model, epochs, learning_rate, device, optimizer_c
                 loss = criterion(outputs, target)
                 loss.backward()
                 optimizer.step()
-            elif optimizer_choice in ['cma', 'lra-cma']:
-                params = np.concatenate([p.detach().cpu().numpy().flatten() for p in model.parameters()])
-                solutions = []
-                for _ in range(optimizer.population_size):
-                    x = optimizer.ask()
-                    start = 0
-                    for p in model.parameters():
-                        end = start + p.numel()
-                        p.data = torch.tensor(x[start:end].reshape(p.shape), dtype=p.dtype, device=p.device)
-                        start = end
-                    outputs = model(data)
-                    loss = criterion(outputs, target).item()
-                    solutions.append((x, loss))
-                optimizer.tell(solutions)
-            elif optimizer_choice in ['bfgs', 'lbfgs']:
+            elif optimizer_choice in ['lbfgs']:
                 def closure():
                     optimizer.zero_grad()
                     outputs = model(data)

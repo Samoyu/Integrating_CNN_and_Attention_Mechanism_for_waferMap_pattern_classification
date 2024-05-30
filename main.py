@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument('--size', type=int, default=224, help='Input image size')
     parser.add_argument('--batch_size', type=int, default=16, help='Batch size')
     parser.add_argument('--seed', type=int, default=60, help='Random seed')
-    parser.add_argument('--optimizer', type=str, default='adam', choices=['sgd', 'adam', 'cma', 'lra-cma', 'lbfgs'], help='Optimizer to use')
+    parser.add_argument('--optimizer', type=str, default='adam', choices=['sgd', 'adam', 'lbfgs'], help='Optimizer to use')
     parser.add_argument('--epochs', type=int, default=10, help='Number of training epochs')
     parser.add_argument('--learning_rate', type=float, default=1e-4, help='Learning rate')
     parser.add_argument('--in_channels', type=int, default=512, help='Number of input channels for the model')
@@ -45,9 +45,4 @@ def main():
     evaluate(test_loader, model, history, device, "DANet Model")
 
 if __name__ == "__main__":
-    """ 
-        Command to run the script:
-        python3 main.py --size 224 --batch_size 16 --seed 60 --optimizer adam --epochs 10 
-                        --learning_rate 1e-4 --in_channels 512 --out_channels 128 --out_dim 8 
-    """
     main()
