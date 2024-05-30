@@ -29,13 +29,13 @@ Follow these steps to set up and run the project:
 To run the script, use the following commands:
 
 ```
-python3 main.py --size 224 
-                --batch_size 16 
-                --seed 60 
-                --optimizer adam 
-                --epochs 10 
-                --learning_rate 1e-4 
-                --in_channels 512 
-                --out_channels 128 
-                --out_dim 8 
+python main.py --size 224 \
+               --batch_size 16 \
+               --seed 60 \
+               --optimizer adam \
+               --epochs 10 \
+               --learning_rate 1e-4 \
+               --in_channels 512 \
+               --out_channels 128 \
+               --out_dim 8
 ```
