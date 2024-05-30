@@ -29,7 +29,7 @@ Follow these steps to set up and run the project:
 To run the script, use the following commands:
 
 ```
-python main.py --size 224 \
+python3 main.py --size 224 \
                --batch_size 16 \
                --seed 60 \
                --optimizer adam \
