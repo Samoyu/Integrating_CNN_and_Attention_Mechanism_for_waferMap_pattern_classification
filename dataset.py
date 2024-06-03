@@ -44,8 +44,7 @@ def get_dataset(size, bs, seed, augment=False):
                   'Random':5,'Scratch':6,'Near-full':7,'none':8}
     dataset = dataset.replace({'failureType':mapping_type})
     dataset = dataset[(dataset['failureType']>=0) & (dataset['failureType']<=7)].reset_index()
-    print(f'type of dataset is : {type(dataset)}')
-    dataset = dataset.loc[0:500]
+
     dataset_train, dataset_test = train_test_split(dataset, test_size=0.2, random_state=seed)
     transform = transforms.Compose([
         transforms.Resize((size, size)),

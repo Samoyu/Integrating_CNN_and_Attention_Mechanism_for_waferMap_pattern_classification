@@ -12,8 +12,6 @@ def training(train_dataloader, model, epochs, learning_rate, device, optimizer_c
         optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
     elif optimizer_choice == 'sgd':
         optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
-    elif optimizer_choice == 'lbfgs':
-        optimizer = torch.optim.LBFGS(model.parameters(), lr=learning_rate)
 
     train_acc = []
     test_acc = []
@@ -36,17 +34,6 @@ def training(train_dataloader, model, epochs, learning_rate, device, optimizer_c
                 loss = criterion(outputs, target)
                 loss.backward()
                 optimizer.step()
-            elif optimizer_choice in ['lbfgs']:
-                def closure():
-                    optimizer.zero_grad()
-                    outputs = model(data)
-                    loss = criterion(outputs, target)
-                    loss.backward()
-                    return loss
-
-                optimizer.step(closure)
-                outputs = model(data)
-                loss = criterion(outputs, target)
 
             total_loss += loss.item()
             _, predicted = torch.max(outputs, 1)

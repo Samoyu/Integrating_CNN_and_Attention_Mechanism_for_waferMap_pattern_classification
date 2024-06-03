@@ -34,7 +34,7 @@ def main():
     
     # Initialize the model
     device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
-    print(f"Using {device} device")
+    print(f"You're now using {device} device")
     model = DANet(args.in_channels, args.out_channels, args.out_dim)
     model.to(device)
     
