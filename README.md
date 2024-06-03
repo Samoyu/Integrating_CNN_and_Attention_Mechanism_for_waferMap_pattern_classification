@@ -1,4 +1,4 @@
-# DANet_opt_experiments
+# Integrating CNN and Attention Mechanism for waferMap pattern classification
 ## Prerequisites
 
 - Python 3.x
