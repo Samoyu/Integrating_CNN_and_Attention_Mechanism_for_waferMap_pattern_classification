@@ -1,5 +1,5 @@
 # Integrating CNN and Attention Mechanism for waferMap pattern classification
-[Paper](https://drive.google.com/file/d/12YQ8QU3dlat-0Z3ZMd5eCY-_VaUjIV3X/view?usp=sharing)
+[Paper]([https://drive.google.com/file/d/12YQ8QU3dlat-0Z3ZMd5eCY-_VaUjIV3X/view?usp=sharing](https://drive.google.com/file/d/1i2tPtV_0VOEJ3n3nrF7O7f36pPgl_n7O/view?usp=sharing))
 
 ## Prerequisites
 
