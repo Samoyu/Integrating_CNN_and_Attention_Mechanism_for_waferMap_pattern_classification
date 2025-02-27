@@ -1,6 +1,9 @@
 # Integrating CNN and Attention Mechanism for waferMap pattern classification
 [Paper](https://drive.google.com/file/d/1i2tPtV_0VOEJ3n3nrF7O7f36pPgl_n7O/view?usp=sharing)
 
+## Data
+![image](wafermaps.png)
+
 ## Prerequisites
 
 - Python 3.x
